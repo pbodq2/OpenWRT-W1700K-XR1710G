@@ -12,14 +12,14 @@
 		     "airoha,an7581", "airoha,en7581";
 	aliases {
 		serial0 = &uart1;
-		led-boot = &led_status_red;
-		led-failsafe = &led_status_blue;
+		led-boot = &led_status_green;
+		led-failsafe = &led_status_red;
 		led-upgrade = &led_status_blue;
-		led-running = &led_status_green;
+		led-running = &led_status_white;
 	};
 	chosen {
 		rootdisk = <&ubi_rootfs>;
-		bootargs = "console=ttyS0,115200 earlycon ubi.block=0,fit root=/dev/fit0 rootwait rdinit=/sbin/init";
+		bootargs = "console=ttyS0,115200 earlycon ubi.block=0,fit root=/dev/fit0 rootwait";
 		stdout-path = "serial0:115200n8";
 	};
 	keys {
@@ -32,21 +32,28 @@
 	};
 	leds {
 		compatible = "gpio-leds";
+
 		led_status_green: led-status-green {
-			label = "status:green";
+			color = <LED_COLOR_ID_GREEN>;
+			function = LED_FUNCTION_STATUS;
 			gpios = <&en7581_pinctrl 17 GPIO_ACTIVE_LOW>;
 		};
+
 		led_status_blue: led-status-blue {
-			label = "status:blue";
+			color = <LED_COLOR_ID_BLUE>;
+			function = LED_FUNCTION_STATUS;
 			gpios = <&en7581_pinctrl 19 GPIO_ACTIVE_LOW>;
 		};
+
 		led_status_red: led-status-red {
-			label = "status:red";
+			color = <LED_COLOR_ID_RED>;
+			function = LED_FUNCTION_STATUS;
 			gpios = <&en7581_pinctrl 29 GPIO_ACTIVE_LOW>;
-			default-state = "on";
 		};
+
 		led_status_white: led-status-white {
-			label = "status:white";
+			color = <LED_COLOR_ID_WHITE>;
+			function = LED_FUNCTION_STATUS;
 			gpios = <&en7581_pinctrl 20 GPIO_ACTIVE_LOW>;
 		};
 	};
@@ -64,12 +71,14 @@
 		};
 	};
 	pcie0_rst_pins: pcie0-rst-pins {
+
 		conf {
 			pins = "pcie_reset0";
 			drive-open-drain = <1>;
 		};
 	};
 	pcie2_rst_pins: pcie2-rst-pins {
+
 		conf {
 			pins = "pcie_reset2";
 			drive-open-drain = <1>;
@@ -203,11 +212,8 @@
 		 <&scuclk EN7581_PCIE1_RST>,
 		 <&scuclk EN7581_PCIC_PERSTOUT0_RST>,
 		 <&scuclk EN7581_PCIC_PERSTOUT1_RST>;
-
-	reset-names = "phy-lane0",
-		      "phy-lane1",
-		      "perstout",
-		      "sec-perstout";
+	reset-names = "phy-lane0", "phy-lane1",
+		      "perstout", "sec-perstout";
 
 	num-lanes = <2>;
 
@@ -252,11 +258,14 @@
 		};
 	};
 };
+
 &pcie1 {
 	status = "disabled";
 };
+
 &pcie2 {
 	status = "okay";
+
 	pinctrl-names = "default";
 	pinctrl-0 = <&pcie2_rst_pins>;
 };
@@ -268,21 +277,27 @@
 &npu {
 	status = "okay";
 };
+
 &afe {
 	status = "disabled";
 };
+
 &eth {
 	status = "okay";
 };
-&pon_pcs {
-	status = "okay";
-};
+
 &gdm1 {
 	status = "okay";
+
 	nvmem-cells = <&lan_mac 0>;
 	nvmem-cell-names = "mac-address";
 	openwrt,netdev-name = "cpu";
 };
+
+&pon_pcs {
+	status = "okay";
+};
+
 &gdm2 {
 	status = "okay";
 	managed = "in-band-status";
@@ -297,9 +312,11 @@
 };
 &gdm4 {
 	status = "okay";
+
 	managed = "in-band-status";
 	phy-handle = <&phy5>;
 	phy-mode = "usxgmii";
+
 	nvmem-cells = <&lan_mac 0>;
 	nvmem-cell-names = "mac-address";
 	openwrt,netdev-name = "lan2";
