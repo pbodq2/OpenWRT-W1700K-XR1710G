@@ -155,7 +155,7 @@ define Device/gemtek_xr1710g-ubi
 		    luci-app-wol \
 		    -wpad-basic-mbedtls \
 		    wpad-wolfssl \
-		    usteer \
+		    luci-app-usteer \
 		    -dnsmasq \
 		    dnsmasq-full \
 		    luci-app-tailscale-community \
