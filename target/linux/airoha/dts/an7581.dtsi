@@ -37,6 +37,12 @@
 			reg = <0x0 0x86ff0000 0x0 0x10000>;
 			record-size = <0x1000>;
 		};
+		
+		npu_mbox: npu-mbox@84a00000 {
+			compatible = "shared-dma-pool";
+			no-map;
+			reg = <0x0 0x84a00000 0x0 0x1000000>;
+		};
 
 		qdma0_buf: qdma0-buf@87000000 {
 			no-map;
