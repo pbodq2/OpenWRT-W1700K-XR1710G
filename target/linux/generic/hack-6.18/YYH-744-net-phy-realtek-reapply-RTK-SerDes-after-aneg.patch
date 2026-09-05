@@ -93,16 +93,16 @@ Assisted-by: Codex:GPT-5.6-sol
  #define RTL8201F_IER				0x13
  
  #define RTL8201F_ISR				0x1e
-@@ -2380,6 +2383,8 @@ static int rtl826x_probe(struct phy_devi
+@@ -2615,6 +2615,8 @@ static int rtl826x_probe(struct phy_device *phydev)
  	priv->enable_pma_low_power = device_property_read_bool(dev, "realtek,enable-pma-low-power");
  	priv->patch_rtk_serdes =
  		device_property_read_bool(dev, "realtek,patch-rtk-serdes");
 +	if (priv->patch_rtk_serdes)
 +		priv->rtk_serdes_state = RTL826X_RTK_SERDES_PULSE;
+ 	priv->phydev = phydev;
  	phydev->priv = priv;
  
- 	if (!priv->enable_pma_low_power)
-@@ -2528,11 +2533,17 @@ static int rtl825xb_get_features(struct
+@@ -2766,11 +2766,17 @@ static int rtl825xb_get_features(struct
  
  static int rtl826x_config_aneg(struct phy_device *phydev)
  {
@@ -120,7 +120,7 @@ Assisted-by: Codex:GPT-5.6-sol
  	if (phydev->autoneg == AUTONEG_DISABLE)
  		return genphy_c45_pma_setup_forced(phydev);
  
-@@ -2562,8 +2573,33 @@ static int rtl826x_config_aneg(struct ph
+@@ -2806,8 +2806,33 @@ static int rtl826x_config_aneg(struct ph
  	return genphy_c45_check_and_restart_aneg(phydev, changed);
  }
  
@@ -154,7 +154,7 @@ Assisted-by: Codex:GPT-5.6-sol
  	int status;
  	int ret;
  
-@@ -2594,7 +2630,96 @@ static int rtl826x_read_status(struct ph
+@@ -2838,7 +2838,96 @@ static int rtl826x_read_status(struct ph
  			return ret;
  	}
  
