@@ -1,3 +1,10 @@
+## Purpose of this build
+
+This build is inherited from fanboy ubi2 which is a simple and stable collection but lack of advanced function fixes. It tries to merging from YYH2913 which featured by some critical and testing fixes. For the conviences , this build supports W1700K and XR1710G.
+
+1. The main OS *.itb binary is in ubi2.0 layout. Users need a corresponding ubi2.0 chainloader as well. Please check out naoki66 repo, YYH2913 repo or hurrian repo. This build does not contain any practical chainloader. Please DO NOT use chainloader built from this build.
+2. This build is plain in user config. It does not contain many apps collection for the sake of simplicity. Please tune the system by your flavor. It is recommended to disable Packet Steering if you turn on Hardware Offloading
+
 ![OpenWrt logo](include/logo.png)
 
 OpenWrt Project is a Linux operating system targeting embedded devices. Instead
