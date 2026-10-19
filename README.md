@@ -1,9 +1,10 @@
 ## Purpose of this build
 
-This build is inherited from fanboy ubi2 which is a simple and stable collection but lack of advanced function fixes. It tries to merging from YYH2913 which featured by some critical and testing fixes. For the conviences , this build supports W1700K and XR1710G.
+This build is inherited from fanboy ubi2 which is a simple and stable collection but lack of advanced fixes. It tries to cherry pick and merge driver fixes from YYH2913 / Hurryman / Gilly1970 and community. For the conviences , this build supports W1700K and XR1710G.
 
-1. The main OS *.itb binary is in ubi2.0 layout. Users need a corresponding ubi2.0 chainloader as well. Please check out naoki66 repo, YYH2913 repo or hurrian repo. This build does not contain any practical chainloader. Please DO NOT use chainloader built from this build.
-2. This build is plain in user config. It does not contain many apps collection for the sake of simplicity. Please tune the system by your flavor. It is recommended to disable Packet Steering if you turn on Hardware Offloading
+1. The main OS *.itb binary is in ubi2.0 layout. Users need a corresponding ubi2.0 chainloader as well. Please check out the repos on naoki66, YYH2913 or hurrian. This build does not contain any practical chainloader. Please DO NOT use chainloader built from this build.
+2. It is recommended to disable Packet Steering if you turn on Hardware Offloading (PPE)
+3. The built-in Usteer app is suit for setiing up Mesh. It will flood meaningless logs of Link Measurement Report (802.11k) IF the device is running as ordinary router / gateway. It is recommend to uninstall this app or fill in 0 on the field "Link measurement interval" to disable the report function.
 
 ![OpenWrt logo](include/logo.png)
 
