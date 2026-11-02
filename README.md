@@ -1,3 +1,11 @@
+## Purpose of this build
+
+This build is inherited from fanboy ubi2 which is a simple and stable collection but lack of advanced fixes. It tries to cherry pick and merge driver fixes from YYH2913 / Hurryman / Gilly1970 and community. For the conviences , this build supports W1700K and XR1710G.
+
+1. The main OS *.itb binary is in ubi2.0 layout. Users need a corresponding ubi2.0 chainloader as well. Please check out the repos on naoki66, YYH2913 or hurrian. This build does not contain any practical chainloader. Please DO NOT use chainloader built from this build.
+2. About Hardware Offload: It is recommended to control it by the Airoha FlowSense app button rather than the native built-in Firewall page. The app includes extra part of API control. Also, It is recommended to disable Packet Steering on Interface page if you turn on Hardware Offloading.
+
+
 ![OpenWrt logo](include/logo.png)
 
 OpenWrt Project is a Linux operating system targeting embedded devices. Instead
