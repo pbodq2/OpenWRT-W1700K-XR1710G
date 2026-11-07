@@ -17,7 +17,7 @@ HW / SW / NO offload
 |:---------|:-------------|:------|
 | 2.4 GHz |  MASTER (AP) |live|
 | 5 GHz  |    MASTER (AP)  |live|
-| 6 GHz  | *MESH (802.11s)*|**not support**|
+| 6 GHz  | *MESH (802.11s)*|**requires both 2.4GHz and 5GHz live first**|
 
 HW / SW / NO offload
 | Radio   |      Mode      |  Result |
