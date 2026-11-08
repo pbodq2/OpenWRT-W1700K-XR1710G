@@ -12,15 +12,15 @@
 	
 	aliases {
 		serial0 = &uart1;
-		led-boot = &led_status_red;
-		led-failsafe = &led_status_blue;
+		led-boot = &led_status_green;
+		led-failsafe = &led_status_red;
 		led-upgrade = &led_status_blue;
-		led-running = &led_status_green;
+		led-running = &led_status_white;
 		label-mac-device = &gdm2;
 	};
 	chosen {
 		rootdisk = <&ubi_rootfs>;
-		bootargs = "console=ttyS0,115200 earlycon ubi.block=0,fit root=/dev/fit0 rootwait rdinit=/sbin/init";
+		bootargs = "console=ttyS0,115200 earlycon ubi.block=0,fit root=/dev/fit0 rootwait";
 		stdout-path = "serial0:115200n8";
 	};
 	keys {
